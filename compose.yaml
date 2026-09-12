@@ -1,0 +1,51 @@
+name: sweb
+
+services:
+  hugo:
+    image: docker.io/hugomods/hugo:exts
+    working_dir: /src
+    environment:
+      HUGO_BASEURL: http://localhost:3000/
+      HUGO_CACHEDIR: /tmp/hugo_cache
+      HUGO_ENVIRONMENT: development
+    volumes:
+      - ./site:/src
+      - ./static-site:/out
+      - ./containers/hugo-entrypoint.sh:/entrypoint.sh:ro
+      - hugo_cache:/tmp/hugo_cache
+      - hugo_node_modules:/src/node_modules
+    command: ["/bin/sh", "/entrypoint.sh"]
+    healthcheck:
+      test: ["CMD-SHELL", "test -f /out/index.html"]
+      interval: 5s
+      timeout: 3s
+      retries: 60
+      start_period: 15s
+
+  web:
+    image: docker.io/library/node:22-bookworm-slim
+    working_dir: /app
+    env_file:
+      - .env
+    environment:
+      STATIC_DIR: /static-site
+      AUTH_URL: http://localhost:3000
+      AUTH_TRUST_HOST: "true"
+      WATCHPACK_POLLING: "true"
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - ./web:/app
+      - ./static-site:/static-site:ro
+      - ./containers/web-entrypoint.sh:/entrypoint.sh:ro
+      - web_node_modules:/app/node_modules
+    ports:
+      - "3000:3000"
+    command: ["/bin/sh", "/entrypoint.sh"]
+    depends_on:
+      hugo:
+        condition: service_healthy
+
+volumes:
+  hugo_cache:
+  hugo_node_modules:
+  web_node_modules:

@@ -1,0 +1,35 @@
+mainSections:
+  - posts
+
+description: Hugo Bootstrap site with Auth.js JWT login and no database.
+keywords: Hugo, Bootstrap, Auth.js
+brand: sweb
+logo: false
+palette: blue
+dateFormat: ":date_long"
+poweredBy: false
+socialShare: false
+searchBar: true
+viewer: true
+titleCase: true
+tocWordCount: 1
+
+sidebar:
+  fixed: true
+
+codeBlock:
+  lineNos: true
+
+post:
+  featuredImage: true
+  numberifyHeadings: true
+  numberifyHeadingsSeparator: "."
+
+search:
+  paginate: 5
+  fuse:
+    threshold: 0.1
+
+author:
+  name: Site Admin
+  bio: Local demo site protected by Auth.js JWT sessions.
