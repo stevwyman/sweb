@@ -1,6 +1,6 @@
 # sweb
 
-Hugo generates a static Bootstrap site. A small Node service in front of it uses [Auth.js](https://authjs.dev) JWT sessions (no database) so some of those pages still require login.
+Hugo generates a static [Docsy](https://www.docsy.dev/) documentation site. A small Node service in front of it uses [Auth.js](https://authjs.dev) JWT sessions (no database) so some of those pages still require login.
 
 Hugo, Go, and Node run **inside Podman**. The files you edit stay on the host.
 
@@ -15,7 +15,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 | | |
 | --- | --- |
-| Public | `/` and `/posts/` |
+| Public | `/`, `/docs/`, and `/blog/` |
 | Protected | `/members/` |
 | Login | `/login` |
 | Demo user | `demo@example.com` / `changeme-demo` |
@@ -30,15 +30,14 @@ Stop with `Ctrl+C` or `podman compose down`.
 
 Do not publish `static-site/` to a public CDN on its own. The HTML for members pages is still sitting on disk; the Auth.js container is what keeps them from being downloaded anonymously.
 
-Protected Hugo pages should also stay out of public search and sitemaps. The sample `members` section sets `index: false` and disables the sitemap so the handbook is not copied into `/search/index.1.json`.
+Protected Hugo pages should also stay out of public search and sitemaps. The sample `members` section sets `index: false` and disables the sitemap.
 
 ## Edit locally
 
 | Path | What it is |
 | --- | --- |
 | `site/content/` | Hugo pages and posts |
-| `site/hugo.toml` | Site title, menus, theme module |
-| `site/config/_default/params.yaml` | Hugo Bootstrap theme options |
+| `site/hugo.toml` | Site title, menus, Docsy theme module |
 | `web/auth.ts` | Auth.js config (JWT, credentials) |
 | `.env` | Secret, users, protected paths |
 

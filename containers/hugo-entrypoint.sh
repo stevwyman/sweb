@@ -2,9 +2,10 @@
 set -eu
 
 cd /src
+export PATH="/opt/dart-sass:/src/node_modules/.bin:${PATH}"
 
-echo "Fetching Hugo Bootstrap theme and JS/CSS dependencies..."
-hugo mod get github.com/razonyang/hugo-theme-bootstrap@v1.13.3
+echo "Fetching Docsy theme and JS/CSS dependencies..."
+hugo mod get github.com/google/docsy/theme@v0.17.0
 hugo mod tidy
 hugo mod npm pack
 npm install

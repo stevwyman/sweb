@@ -2,7 +2,7 @@ name: sweb
 
 services:
   hugo:
-    image: docker.io/hugomods/hugo:exts
+    image: docker.io/hugomods/hugo:dart-sass-0.164.0
     working_dir: /src
     environment:
       HUGO_BASEURL: http://localhost:3000/

@@ -9,4 +9,4 @@ tags:
 
 This article is public. Hugo writes it to static HTML, and the Auth.js service serves it without checking a session.
 
-Edit this file under `site/content/posts/` on your machine. The Hugo container rebuilds automatically.
+Edit this file under `site/content/blog/` on your machine. The Hugo container rebuilds automatically.

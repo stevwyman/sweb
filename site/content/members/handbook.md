@@ -1,7 +1,9 @@
 ---
 title: Internal handbook
+linkTitle: Internal handbook
 date: 2026-09-11
 description: Example of a Hugo page that is gated by Auth.js.
+weight: 10
 index: false
 sitemap:
   disable: true
