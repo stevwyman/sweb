@@ -1,0 +1,12 @@
+.env
+static-site/
+**/node_modules/
+**/.next/
+site/resources/
+site/public/
+site/.hugo_build.lock
+site/hugo_stats.json
+site/package.json
+site/package-lock.json
+site/assets/jsconfig.json
+*.log
