@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server"
 import { auth } from "@/auth"
 import { isProtectedPath } from "@/auth.config"
+import { filterSearchIndex, isOfflineSearchIndexPath } from "@/lib/search-index"
 import { contentTypeFor, readStaticFile, resolveStaticFile } from "@/lib/static-site"
 
 export const runtime = "nodejs"
@@ -27,6 +28,24 @@ export async function GET(request: Request, context: RouteContext) {
   }
 
   const body = await readStaticFile(filePath)
+
+  if (isOfflineSearchIndexPath(pathname, filePath)) {
+    let docs: unknown
+    try {
+      docs = JSON.parse(body.toString("utf8"))
+    } catch {
+      return new NextResponse("Invalid search index", { status: 500 })
+    }
+
+    const filtered = filterSearchIndex(docs, Boolean(session?.user))
+    return NextResponse.json(filtered, {
+      headers: {
+        "cache-control": "private, no-store",
+        vary: "Cookie",
+      },
+    })
+  }
+
   const headers = new Headers()
   headers.set("content-type", contentTypeFor(filePath))
   headers.set(

@@ -1,4 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="sweb">
-  <rect width="64" height="64" rx="12" fill="#30638e"/>
-  <text x="32" y="42" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#fff">sw</text>
+  <defs>
+    <clipPath id="sweb-logo">
+      <rect width="64" height="64" rx="12"/>
+    </clipPath>
+  </defs>
+  <g clip-path="url(#sweb-logo)">
+    <rect width="64" height="64" fill="#253C6D"/>
+    <rect y="52" width="64" height="12" fill="#F2842F"/>
+  </g>
+  <text x="32" y="40" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="22" font-weight="700" fill="#fff">sw</text>
 </svg>

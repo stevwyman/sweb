@@ -53,7 +53,7 @@ export function LoginForm({
       <button className="btn btn-primary" type="submit">
         Sign in
       </button>
-      <p className="small text-secondary mb-0">
+      <p className="small sweb-muted mb-0">
         Default demo user: <code>demo@example.com</code> / <code>changeme-demo</code>
       </p>
     </form>

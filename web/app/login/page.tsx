@@ -16,7 +16,7 @@ export default async function LoginPage({
       <div className="card shadow-sm">
         <div className="card-body p-4">
           <h1 className="h4 mb-3">sweb login</h1>
-          <p className="text-secondary">
+          <p className="sweb-muted">
             Auth.js stores an encrypted JWT in a cookie. There is no database.
           </p>
           {session?.user ? (

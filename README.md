@@ -30,7 +30,7 @@ Stop with `Ctrl+C` or `podman compose down`.
 
 Do not publish `static-site/` to a public CDN on its own. The HTML for members pages is still sitting on disk; the Auth.js container is what keeps them from being downloaded anonymously.
 
-Protected Hugo pages should also stay out of public search and sitemaps. The sample `members` section sets `index: false` and disables the sitemap.
+Protected Hugo pages stay out of sitemaps (`index: false`). Docsy Lunr search is on in the navbar and docs sidebar; Auth.js filters the search index so `/members` hits only appear when you are signed in.
 
 ## Edit locally
 
